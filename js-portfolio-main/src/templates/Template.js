@@ -1,8 +1,8 @@
-import getData from "../utils/getData.js";
+import getData from "@/utils/getData.js";
 // Images
-import githubLogo from '../assets/images/github.png'
-import twitterLogo from '../assets/images/twitter.png'
-import instagramLogo from '../assets/images/instagram.png'
+import githubLogo from "@/assets/images/github.png";
+import twitterLogo from "@/assets/images/twitter.png";
+import instagramLogo from "@/assets/images/instagram.png";
 
 const Template = async () => {
   const data = await getData();

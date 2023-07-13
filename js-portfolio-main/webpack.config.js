@@ -24,18 +24,11 @@ module.exports = {
         type: "asset/resource",
       },
       {
-        test: /\.(woff|woff2)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            esModule: false,
-            limit: 10000,
-            mimetype: "application/font-woff",
-            name: "[name][contenthash].[ext]",
-            outputPath: "./public/fonts/",
-            publicPath: "./public/fonts/",
-          },
+        generator: {
+          filename: "assets/fonts/[hash][ext]",
         },
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
     ],
   },
@@ -61,6 +54,12 @@ module.exports = {
     new CssMinimizerPlugin(),
   ],
   resolve: {
+    alias: {
+      "@/assets": path.resolve(__dirname, "src/assets"),
+      "@/images": path.resolve(__dirname, "src/assets/images"),
+      "@/styles": path.resolve(__dirname, "src/styles"),
+      "@/utils": path.resolve(__dirname, "src/utils"),
+    },
     extensions: [".js"],
   },
 };
