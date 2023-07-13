@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "dev": "webpack --mode development",
+    "setup-env": "node -e \"const fs = require('fs'); fs.copyFileSync('example.env', '.env');\""
   },
   "repository": {
     "type": "git",
