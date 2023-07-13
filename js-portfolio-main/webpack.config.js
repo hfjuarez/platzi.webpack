@@ -1,7 +1,8 @@
 const path = require("path");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
@@ -52,12 +53,14 @@ module.exports = {
       filename: "public/[name].[contenthash].css",
     }),
     new CssMinimizerPlugin(),
+    new DotEnv(),
   ],
   resolve: {
     alias: {
       "@/assets": path.resolve(__dirname, "src/assets"),
       "@/images": path.resolve(__dirname, "src/assets/images"),
       "@/styles": path.resolve(__dirname, "src/styles"),
+      "@/templates": path.resolve(__dirname, "src/templates"),
       "@/utils": path.resolve(__dirname, "src/utils"),
     },
     extensions: [".js"],
