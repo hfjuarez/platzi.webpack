@@ -1,9 +1,18 @@
-const path = require("path");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 
 module.exports = {
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    open: true,
+    port: 3000,
+    static: path.join(__dirname, "dist"),
+  },
   entry: "./src/index.js",
   mode: "development",
   module: {
@@ -39,6 +48,8 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
+    new DotEnv(),
     new HtmlWebpackPlugin({
       filename: "./index.html",
       inject: true,
@@ -47,7 +58,6 @@ module.exports = {
     new MiniCSSExtractPlugin({
       filename: "public/[name].[contenthash].css",
     }),
-    new DotEnv(),
   ],
   resolve: {
     alias: {
@@ -59,5 +69,4 @@ module.exports = {
     },
     extensions: [".js"],
   },
-  watch: true,
 };

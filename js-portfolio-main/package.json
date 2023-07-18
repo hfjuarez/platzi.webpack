@@ -4,10 +4,12 @@
   "description": "A minimal portfolio with Vanilla JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "analyze": "webpack --profile --json > stats.json && npx webpack-bundle-analyzer stats.json",
     "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --config webpack.config.dev.js",
-    "setup-env": "node -e \"const fs = require('fs'); fs.copyFileSync('example.env', '.env');\""
+    "start": "webpack serve --config webpack.config.dev.js",
+    "setup-env": "node -e \"const fs = require('fs'); fs.copyFileSync('example.env', '.env');\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,8 @@
     "sass-loader": "^13.3.2",
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.82.0",
-    "webpack-cli": "^5.1.0"
+    "webpack-bundle-analyzer": "^4.9.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.1"
   }
 }
