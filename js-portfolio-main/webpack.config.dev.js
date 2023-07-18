@@ -1,5 +1,3 @@
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const DotEnv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
@@ -13,6 +11,7 @@ module.exports = {
     port: 3000,
     static: path.join(__dirname, "dist"),
   },
+  devtool: "source-map",
   entry: "./src/index.js",
   mode: "development",
   module: {
@@ -48,7 +47,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
     new DotEnv(),
     new HtmlWebpackPlugin({
       filename: "./index.html",
